@@ -1,0 +1,131 @@
+usertype:
+	Type typename
+		date1statement
+		date2statement
+	End Tyspe
+
+
+condition:
+		If condition Then
+
+		[statements1]
+
+		else
+
+		[statements2]
+
+		end if
+
+	or:
+		Select Case testexpression
+
+		[Case expressionlist - n]
+
+		[statements-n]...
+
+		[Case Else
+
+		[elsestatements]]
+
+		End Select
+
+
+loop:
+		For counter = start To End [Step step]
+
+		[statements]
+
+		[Exit For]
+
+		[statements]
+
+		Next [counter]
+
+	or:
+		For Each element in group 
+
+		[statements]
+
+		[exit for]
+
+		[statements]
+
+		next [element]
+
+	or:
+		Do [{While | Until} condition]
+
+		[statements]
+
+		[Exit Do]
+
+		[Statements]
+
+		Loop
+
+	or:
+		While condition 
+
+		[statements]
+
+		Wend
+
+
+
+Workboook Object:
+	Sub 测试集合工作簿()
+	    Dim wbs As Workbooks '保存工作簿集合
+	    Dim wb As Workbook   '保存工作簿对象
+	    Dim ws As Worksheet  '保存工作表对象
+	    Dim wbscount As Integer '保存工作簿集合中对象数目
+	    Dim wscount As Integer  '保存工作表集合中的对象数目
+	    Dim i As Integer
+	    Set wbs = Application.Workbooks '获取当前工作簿数目
+	    wbscount = wbs.Count '获取工作簿集合中的元素
+	    Debug.Print
+	    Debug.Print "添加工作簿之前，工作簿的数目为：" & wbscount
+	    Debug.Print "添加前各工作簿名称如下：";
+	    For Each temp In wbs
+	        Debug.Print temp.Name & " ";
+	    Next
+	    wbs.Add               '向工作表中添加元素
+	    wbscount = wbs.Count
+	    For i = 1 To 2        '换行
+	        Debug.Print
+	    Next
+	     Debug.Print "添加工作簿之后，工作簿的数目为：" & wbscount
+	     Debug.Print "添加后各工作簿名称如下：";
+	    For Each temp In wbs
+	        Debug.Print temp.Name & " ";
+	    Next
+	    Set wb = Workbooks(2)
+	    wb.Activate
+	    For i = 1 To 2
+	        Debug.Print
+	    Next
+	    Debug.Print "添加工作簿之后集合中的第二个成员为：" & wb.Name
+	    wsscount = wb.Sheets.Count
+	    For i = 1 To 2
+	      Debug.Print
+	    Next
+	    Debug.Print "添加工作表之前，工作簿的数目为：" & wbscount
+	    Debug.Print "添加前各工作表名称如下：";
+	    For Each temp In wb.Worksheets
+	        Debug.Print temp.Name & " ";
+	    Next
+	    wb.Worksheets.Add
+	    Set ws = wb.Worksheets(1)
+	    For i = 1 To 2
+	        Debug.Print
+	    Next
+	    Debug.Print "添加工作表之后集合中的第一个成员为 ：" & ws.Name
+	    wsscount = wb.Worksheets.Count
+	    For i = 1 To 2
+	        Debug.Print
+	    Next
+	    Debug.Print "添加工作表之后，工作表的数目为：" & wbscount
+	    Debug.Print "添加后前各工作簿名称如下：";
+	     For Each temp In wb.Worksheets
+	        Debug.Print temp.Name & " ";
+	    Next
+	End Sub
